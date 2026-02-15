@@ -1,0 +1,9 @@
+streamlit
+langchain-openai
+langchain-community
+langchain-classic
+langchain-huggingface
+sentence-transformers
+faiss-cpu
+openai<2.0.0
+tiktoken
