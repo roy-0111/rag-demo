@@ -59,7 +59,7 @@ except Exception as e:
 
 #  User Interface
 # query = st.text_input("Ask a question about the SEC filings (e.g., 'What were the lease liabilities?'):")
-query = st.text_input("Ask a question about the financial report (e.g., 'What were the lease liabilities?'):")
+query = st.text_input("Ask a question about the financial report (e.g., 'What is the net liquidity position?' or 'Summarize lease liabilities.'):")
 
 if st.button("Run Analysis"):
     if query:
