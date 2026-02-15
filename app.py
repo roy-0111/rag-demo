@@ -24,7 +24,7 @@ def load_rag_system():
         embeddings, 
         allow_dangerous_deserialization=True
     )
-    retriever = vector_store.as_retriever(search_kwargs={"k": 5})
+    retriever = vector_store.as_retriever(search_kwargs={"k": 10})
     llm = ChatOpenAI(model_name="gpt-4o", temperature=0)
     
     template = """Use the context below to answer the question. Keep your answer factual and precise.
