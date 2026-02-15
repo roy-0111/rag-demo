@@ -54,17 +54,24 @@ try:
 except Exception as e:
     st.error(f"Failed to load the system. Error: {e}")
 
-#  User Interface
+# User Interface
 query = st.text_input("Ask a question about the financial report (e.g., 'What were the lease liabilities?'):")
 
 if st.button("Run Analysis"):
     if query:
-        with st.spinner("Searching millions of parameters..."):
+        with st.spinner("Analyzing document structure..."):
             result = qa_chain.invoke({"query": query})
             
+            # Header for the answer
             st.markdown("### 🤖 AI Analysis")
-            st.info(result['result'])
             
+            # Answer (using Markdown for clean, standard fonts)
+            st.markdown(result['result']) 
+            
+            # A visual divider for spacing
+            st.markdown("---") 
+            
+            # Citations Section
             st.markdown("### 📚 Retrieved Context & Citations")
             for i, doc in enumerate(result['source_documents']):
                 company = doc.metadata.get('company', 'Unknown')
