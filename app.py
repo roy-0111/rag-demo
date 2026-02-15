@@ -57,6 +57,7 @@ except Exception as e:
 # User Interface
 query = st.text_input("Ask a question about the financial report (e.g., 'What were the lease liabilities?'):")
 
+
 if st.button("Run Analysis"):
     if query:
         with st.spinner("Analyzing document structure..."):
@@ -64,7 +65,7 @@ if st.button("Run Analysis"):
             
             st.markdown("### 🤖 AI Analysis")
             
-            st.write(result['result']) 
+            st.text(result['result']) 
             
             st.markdown("---") 
             
@@ -76,4 +77,25 @@ if st.button("Run Analysis"):
                     st.write(doc.page_content[:1000] + "...")
     else:
         st.warning("Please enter a question first.")
+
+
+# if st.button("Run Analysis"):
+#     if query:
+#         with st.spinner("Analyzing document structure..."):
+#             result = qa_chain.invoke({"query": query})
+            
+#             st.markdown("### 🤖 AI Analysis")
+            
+#             st.write(result['result']) 
+            
+#             st.markdown("---") 
+            
+#             st.markdown("### 📚 Retrieved Context & Citations")
+#             for i, doc in enumerate(result['source_documents']):
+#                 company = doc.metadata.get('company', 'Unknown')
+#                 page = doc.metadata.get('page', '?')
+#                 with st.expander(f"Citation {i+1}: {company} - Page {page}"):
+#                     st.write(doc.page_content[:1000] + "...")
+#     else:
+#         st.warning("Please enter a question first.")
         
