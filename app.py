@@ -55,7 +55,7 @@ except Exception as e:
     st.error(f"Failed to load the system. Error: {e}")
 
 #  User Interface
-query = st.text_input("Ask a question about the financial report (e.g., 'What is the net liquidity position?' or 'Summarize lease liabilities.'):")
+query = st.text_input("Ask a question about the financial report (e.g., 'What were the lease liabilities?'):")
 
 if st.button("Run Analysis"):
     if query:
