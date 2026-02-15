@@ -6,6 +6,10 @@ from langchain_openai import ChatOpenAI
 from langchain_classic.chains import RetrievalQA
 from langchain_core.prompts import PromptTemplate
 
+# to reset
+def clear_text():
+    st.session_state["query_input"] = ""
+    
 # page styling
 st.set_page_config(page_title="Financial RAG Demo", layout="centered")
 
@@ -55,16 +59,26 @@ except Exception as e:
     st.error(f"Failed to load the system. Error: {e}")
 
 # User Interface
-query = st.text_input("Ask a question about the financial report (e.g., 'What were the lease liabilities?'):")
+query = st.text_input(
+    "Ask a question about the financial report (e.g., 'What were the lease liabilities?'):",
+    key="query_input"  
+)
 
+# Use columns to put buttons side-by-side
+col1, col2 = st.columns([1, 4]) 
 
-if st.button("Run Analysis"):
+with col1:
+    run_button = st.button("Run Analysis")
+
+with col2:
+    st.button("Clear History", on_click=clear_text)
+
+if run_button:
     if query:
         with st.spinner("Analyzing document structure..."):
             result = qa_chain.invoke({"query": query})
             
             st.markdown("### 🤖 AI Analysis")
-            
             st.text(result['result']) 
             
             st.markdown("---") 
@@ -79,6 +93,8 @@ if st.button("Run Analysis"):
         st.warning("Please enter a question first.")
 
 
+# query = st.text_input("Ask a question about the financial report (e.g., 'What were the lease liabilities?'):")
+
 # if st.button("Run Analysis"):
 #     if query:
 #         with st.spinner("Analyzing document structure..."):
@@ -86,7 +102,7 @@ if st.button("Run Analysis"):
             
 #             st.markdown("### 🤖 AI Analysis")
             
-#             st.write(result['result']) 
+#             st.text(result['result']) 
             
 #             st.markdown("---") 
             
@@ -98,4 +114,5 @@ if st.button("Run Analysis"):
 #                     st.write(doc.page_content[:1000] + "...")
 #     else:
 #         st.warning("Please enter a question first.")
+
         
