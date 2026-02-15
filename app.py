@@ -62,16 +62,12 @@ if st.button("Run Analysis"):
         with st.spinner("Analyzing document structure..."):
             result = qa_chain.invoke({"query": query})
             
-            # Header for the answer
             st.markdown("### 🤖 AI Analysis")
             
-            # Answer (using Markdown for clean, standard fonts)
-            st.markdown(result['result']) 
+            st.write(result['result']) 
             
-            # A visual divider for spacing
             st.markdown("---") 
             
-            # Citations Section
             st.markdown("### 📚 Retrieved Context & Citations")
             for i, doc in enumerate(result['source_documents']):
                 company = doc.metadata.get('company', 'Unknown')
@@ -80,3 +76,4 @@ if st.button("Run Analysis"):
                     st.write(doc.page_content[:1000] + "...")
     else:
         st.warning("Please enter a question first.")
+        
