@@ -10,7 +10,7 @@ from langchain_core.prompts import PromptTemplate
 st.set_page_config(page_title="Financial RAG Demo", layout="centered")
 
 st.title("Financial Analytics RAG System")
-st.markdown("### Structure-Aware QA for Corporate Disclosures")
+st.markdown("### Structure-Aware QA for SEC 10-K Filings")
 
 # load the API Key from Streamlit Secrets
 os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
