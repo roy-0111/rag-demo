@@ -7,10 +7,13 @@ from langchain_classic.chains import RetrievalQA
 from langchain_core.prompts import PromptTemplate
 
 # Set page styling
-st.set_page_config(page_title="M.Tech RAG Demo", layout="centered")
+# st.set_page_config(page_title="M.Tech RAG Demo", layout="centered")
+st.set_page_config(page_title="Financial RAG Demo", layout="centered")
 
-st.title("SEC 10-K RAG Analyzer")
-st.markdown("### Query Tesla and Apple Financial Disclosures")
+st.title("Financial Analytics RAG System")
+st.markdown("### Structure-Aware QA for Corporate Disclosures")
+# st.title("SEC 10-K RAG Analyzer")
+# st.markdown("### Query Tesla and Apple Financial Disclosures")
 
 # Securely load the API Key from Streamlit Secrets
 os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
@@ -55,7 +58,8 @@ except Exception as e:
     st.error(f"Failed to load the system. Error: {e}")
 
 #  User Interface
-query = st.text_input("Ask a question about the SEC filings (e.g., 'What were the lease liabilities?'):")
+# query = st.text_input("Ask a question about the SEC filings (e.g., 'What were the lease liabilities?'):")
+query = st.text_input("Ask a question about the financial report (e.g., 'What were the lease liabilities?'):")
 
 if st.button("Run Analysis"):
     if query:
